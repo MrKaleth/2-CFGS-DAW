@@ -32,6 +32,18 @@ function muestraProductos(listaProductos) {
     };
 };
 
+/*
+for(const producto of productos){
+    console.log(`${producto.nombre} - ${producto.precio} € - Stock: ${producto.stock}`);
+}
+
+Equivalente en java:
+for (Producto producto : productos) {
+
+};
+
+*/
+
 muestraProductos(productos);
 
 // EJERCICIO 3
@@ -51,8 +63,9 @@ calculaPrecio(productos);
 
 // EJERCICIO 4
 
-console.log("--- Tarea 4 ---");
+console.log("--- Tarea 4 --- (comentada)");
 
+/*
 function mostrarProductosDisponibles(listaProductos) {
     let listaUL = document.getElementById("lista");
     listaUL.innerHTML = "";
@@ -64,4 +77,49 @@ function mostrarProductosDisponibles(listaProductos) {
     }
 };
 
+
 mostrarProductosDisponibles(productos);
+
+Otra opción es la siguiente:
+
+const lista = document.querySelector("#lista");
+for (const producto of productos) {
+    if (producto.stock > 0) {
+        const item = document.createElement('li');
+        item.textContent = `${producto.nombre} - ${producto.precio}$`;
+        lista.appendChild(item);
+    };
+};
+*/
+
+
+
+// EJERCICIO 5
+
+console.log("--- Tarea 5 ---");
+
+const botonMostrar = document.getElementById("mostrar");
+
+botonMostrar.addEventListener("click", function () {
+    let listaUL = document.getElementById("lista");
+    listaUL.innerHTML = "";
+    for (let producto of productos) {
+        if (producto.stock > 0) {
+            let contenidoLi = `${producto.nombre} - ${producto.precio} €`;
+            listaUL.innerHTML += `<li>${contenidoLi}</li>`;
+        }
+    }
+    console.log("Mostrando tras pulsar botón");
+});
+
+// EJERCICIO 6
+
+console.log("--- Tarea 6 ---");
+
+const resumen = document.querySelector("#resumen");
+let totalProductosConStock = 0;
+for(const producto of productos){
+    if(producto.stock > 0) totalProductosConStock +=1;
+};
+
+resumen.textContent = `Hay ${totalProductosConStock} productos disponibles`;
