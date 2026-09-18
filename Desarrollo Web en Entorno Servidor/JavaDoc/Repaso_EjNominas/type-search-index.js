@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"laboral.main","l":"CalculaNominas"},{"p":"laboral.exceptions","l":"DatosNoCorrectosException"},{"p":"laboral.models","l":"Empleado"},{"p":"laboral.models","l":"Nomina"},{"p":"laboral.models","l":"Persona"}];updateSearchResults();
