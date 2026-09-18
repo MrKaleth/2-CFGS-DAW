@@ -2,6 +2,8 @@ package laboral.models;
 
 /**
  * Representa a una persona dentro del sistema laboral.
+ * @author Darío Bonilla
+ * @version 1.0
  */
 public class Persona {
     /**

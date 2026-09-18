@@ -5,16 +5,18 @@ import laboral.models.Empleado;
 import static laboral.models.Nomina.sueldo;
 
 /**
- * Clase principal del sistema encargada de ejecutar la simulación del cálculo de nóminas.
- * Coordina la creación de empleados, la modificación de sus datos y la impresión de
- * sus retribuciones financieras, controlando los flujos de error del sistema.
+ * Clase principal encargada de ejecutar la simulación.
+ * Creación de empleados, modificación de sus datos e impresión de
+ * sus retribuciones financieras, controlando errores del sistema.
+ * @author Darío Bonilla
+ * @version 1.0
  */
 public class CalculaNominas {
 
     /**
-     * Punto de entrada principal de la aplicación.
+     * Punto de entrada de la aplicación.
      * Crea empleados válidos, simula cambios de categoría y antigüedad,
-     * e intenta forzar un error para demostrar el control de excepciones.
+     * intenta forzar un error para demostrar el control de excepciones.
      *
      * @param args Argumentos de la línea de comandos (no utilizados en esta aplicación).
      */

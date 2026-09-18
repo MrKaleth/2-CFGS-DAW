@@ -4,6 +4,8 @@ package laboral.exceptions;
  * Excepción  para gestionar errores relacionados con la validez de los datos introducidos.
  * Se lanza cuando los parámetros de un empleado (como la categoría o los años trabajados)
  * no cumplen con los rangos o reglas de negocio establecidos por el sistema laboral.
+ * @author Darío Bonilla
+ * @version 1.0
  */
 public class DatosNoCorrectosException extends Exception {
 

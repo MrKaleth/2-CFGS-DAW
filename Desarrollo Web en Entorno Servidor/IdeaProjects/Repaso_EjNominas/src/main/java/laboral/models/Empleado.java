@@ -5,6 +5,8 @@ import laboral.exceptions.DatosNoCorrectosException;
 /**
  * Representa a un empleado dentro del sistema laboral, heredando los datos básicos de una persona.
  * Añade información específica del entorno de trabajo como la categoría profesional y la antigüedad.
+ * @author Darío Bonilla
+ * @version 1.0
  */
 public class Empleado extends Persona {
 
@@ -80,6 +82,7 @@ public class Empleado extends Persona {
     /**
      * Devuelve en formato de texto todos los datos detallados del empleado,
      * incluyendo los campos heredados de la clase Persona.
+     * Nota: Es equivalente a la funcionalidad que ofrece el método toString.
      *
      * @return La información completa del empleado.
      */

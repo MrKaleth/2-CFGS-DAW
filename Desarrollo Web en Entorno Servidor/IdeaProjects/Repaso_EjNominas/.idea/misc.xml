@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/JavaDoc" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../JavaDoc/Repaso_EjNominas" />
     <option name="OTHER_OPTIONS" value="-encoding UTF-8 -docencoding UTF-8 -charset UTF-8 " />
   </component>
   <component name="MavenProjectsManager">
