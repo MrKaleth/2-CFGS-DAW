@@ -5,6 +5,7 @@ import laboral.exceptions.DatosNoCorrectosException;
 /**
  * Representa a un empleado dentro del sistema laboral, heredando los datos básicos de una persona.
  * Añade información específica del entorno de trabajo como la categoría profesional y la antigüedad.
+ *
  * @author Darío Bonilla
  * @version 1.0
  */
@@ -96,7 +97,6 @@ public class Empleado extends Persona {
                 ", sexo=" + sexo +
                 '}');
     }
-
 
 }
 
