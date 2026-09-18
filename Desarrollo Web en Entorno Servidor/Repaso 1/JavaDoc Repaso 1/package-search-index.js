@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"laboral.exceptions"},{"l":"laboral.main"},{"l":"laboral.models"}];updateSearchResults();
