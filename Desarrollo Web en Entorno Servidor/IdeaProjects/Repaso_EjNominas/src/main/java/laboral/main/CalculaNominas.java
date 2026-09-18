@@ -39,6 +39,7 @@ public class CalculaNominas {
             f.escribe(e1);
             f.escribe(e2);
 
+            System.out.println("--- EMPLEADO CON ERROR ---");
             Empleado e3 = new Empleado('M', "32000032C", "John Huges", 11, 25);
             f.escribe(e3);
 
