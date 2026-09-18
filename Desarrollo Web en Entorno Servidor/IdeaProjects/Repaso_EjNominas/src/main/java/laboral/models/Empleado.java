@@ -37,20 +37,18 @@ public class Empleado extends Persona {
 
     /**
      * Constructor completo que permite definir la posición y experiencia previa del empleado.
-     * Valida que los datos numéricos aportados sean correctos antes de realizar la asignación.
+     * Delega la validación de los datos numéricos en el método {@link #validaEmpleado(int, int)}.
      *
      * @param sexo            El sexo asignado al empleado.
      * @param dni             El Documento Nacional de Identidad del empleado.
      * @param nombre          El nombre completo del empleado.
      * @param categoria       La categoría profesional a asignar.
      * @param anyosTrabajados Los años trabajados a asignar.
-     * @throws DatosNoCorrectosException Si la categoría no está entre 1 y 10, o si los años trabajados son negativos.
+     * @throws DatosNoCorrectosException Si la validación de datos falla a través del método de verificación.
      */
     public Empleado(Character sexo, String dni, String nombre, int categoria, int anyosTrabajados) throws DatosNoCorrectosException {
         super(sexo, dni, nombre);
-        if (categoria < 1 || categoria > 10 || anyosTrabajados < 0) {
-            throw new DatosNoCorrectosException("Datos de empleado no válidos");
-        }
+        validaEmpleado(categoria, anyosTrabajados);
         this.categoria = categoria;
         this.anyosTrabajados = anyosTrabajados;
     }
@@ -96,6 +94,20 @@ public class Empleado extends Persona {
                 ", dni='" + dni + '\'' +
                 ", sexo=" + sexo +
                 '}');
+    }
+
+    /**
+     * Valida la corrección de los datos numéricos aportados para el empleado.
+     * Comprueba que la categoría se encuentre en el rango permitido y que los años no sean negativos.
+     *
+     * @param categoria       La categoría profesional a verificar.
+     * @param anyosTrabajados Los años trabajados a verificar.
+     * @throws DatosNoCorrectosException Si la categoría no está entre 1 y 10, o si los años trabajados son negativos.
+     */
+    private void validaEmpleado(int categoria, int anyosTrabajados) throws DatosNoCorrectosException {
+        if (categoria < 1 || categoria > 10 || anyosTrabajados < 0) {
+            throw new DatosNoCorrectosException("Datos de empleado no válidos");
+        }
     }
 
 }
