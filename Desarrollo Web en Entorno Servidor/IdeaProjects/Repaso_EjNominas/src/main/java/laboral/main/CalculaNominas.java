@@ -1,5 +1,6 @@
 package laboral.main;
 
+import laboral.exceptions.DatosNoCorrectosException;
 import laboral.models.Empleado;
 
 import static laboral.models.Nomina.sueldo;
@@ -41,8 +42,7 @@ public class CalculaNominas {
             Empleado e3 = new Empleado('M', "32000032C", "John Huges", 11, 25);
             f.escribe(e3);
 
-        } catch (Exception e) {
-
+        } catch (DatosNoCorrectosException e) {
             System.out.println("Datos no correctos");
         }
     }
