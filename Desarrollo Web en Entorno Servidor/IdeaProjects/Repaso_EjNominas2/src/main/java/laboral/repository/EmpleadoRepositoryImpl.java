@@ -21,7 +21,6 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
 
     @Override
     public void altaEmpleado(Empleado empleado) {
-        // Corregido: Se cambia 'anyos_trabajados' por 'anyos' para coincidir con tu tabla MariaDB
         String sqlEmpleado = "INSERT INTO Empleados (dni, nombre, sexo, categoria, anyos) " +
                 "VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE nombre=?, sexo=?, categoria=?, anyos=?";
 

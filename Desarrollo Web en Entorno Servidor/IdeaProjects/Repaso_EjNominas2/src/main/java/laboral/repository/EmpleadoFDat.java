@@ -21,6 +21,4 @@ public class EmpleadoFDat {
             System.err.println("Error al escribir el archivo binario: " + e.getMessage());
         }
     }
-
-
 }
