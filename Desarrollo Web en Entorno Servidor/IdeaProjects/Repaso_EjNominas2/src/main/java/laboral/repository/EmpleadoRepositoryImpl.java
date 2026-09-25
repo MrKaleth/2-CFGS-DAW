@@ -8,6 +8,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementación de la interfaz {@link EmpleadoRepository} que utiliza
+ * una base de datos MariaDB para el almacenamiento principal y ficheros
+ * para copias de seguridad.
+ */
 public class EmpleadoRepositoryImpl implements EmpleadoRepository {
     private final EmpleadoFDat empleadoFDat = new EmpleadoFDat();
     private final EmpleadoFTXT empleadoFTXT = new EmpleadoFTXT();
@@ -15,10 +20,21 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
 
+    /**
+     * Establece y obtiene la conexión con la base de datos.
+     *
+     * @return Objeto Connection con la base de datos establecida.
+     * @throws SQLException Si ocurre algún error al conectar con la base de datos.
+     */
     private Connection obtenerConexion() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
+    /**
+     * {@inheritDoc}
+     * Realiza la inserción o actualización utilizando transacciones para asegurar
+     * que la tabla Empleados y la tabla Nominas se mantienen consistentes.
+     */
     @Override
     public void altaEmpleado(Empleado empleado) {
         String sqlEmpleado = "INSERT INTO Empleados (dni, nombre, sexo, categoria, anyos) " +
@@ -58,6 +74,9 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void altaEmpleado(String rutaTXT) {
         List<Empleado> nuevos = empleadoFTXT.leerEmpleados(rutaTXT);
@@ -67,6 +86,9 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         System.out.println("Lote procesado. Empleados añadidos a la BD: " + nuevos.size());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Empleado> obtenerTodos() {
         List<Empleado> lista = new ArrayList<>();
@@ -94,6 +116,9 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         return lista;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Empleado obtenerPorDni(String dni) {
         String sql = "SELECT * FROM Empleados WHERE dni = ?";
@@ -117,6 +142,9 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         return empleadoEncontrado;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int obtenerSalarioPorDni(String dni) {
         String sql = "SELECT sueldo FROM Nominas WHERE dni = ?";
@@ -135,6 +163,9 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         return salario;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void realizarCopiaSeguridad(String rutaTXT, String rutaDAT) {
         List<Empleado> todosLosEmpleados = obtenerTodos();

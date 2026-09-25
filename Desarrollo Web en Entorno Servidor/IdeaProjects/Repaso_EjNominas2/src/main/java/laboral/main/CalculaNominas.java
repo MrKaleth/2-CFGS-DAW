@@ -18,6 +18,11 @@ public class CalculaNominas {
     private final EmpleadoService servicio = new EmpleadoService();
     private final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Punto de entrada principal de la aplicación.
+     *
+     * @param args Argumentos de la línea de comandos (no utilizados).
+     */
     public static void main(String[] args) {
         CalculaNominas programa = new CalculaNominas();
         programa.ejecutarMenu();
@@ -52,6 +57,8 @@ public class CalculaNominas {
 
     /**
      * Deriva la ejecución del flujo del programa según la opción seleccionada.
+     *
+     * @param opcion La opción numérica seleccionada por el usuario.
      */
     private void procesarOpcion(int opcion) {
         switch (opcion) {
@@ -77,7 +84,7 @@ public class CalculaNominas {
                 menuAltaIndividual();
                 break;
             case 8:
-                servicio.altaEmpleado(); // Llama a la sobrecarga por lote que busca 'empleadosNuevos.txt'
+                servicio.altaEmpleado();
                 break;
             case 9:
                 System.out.println("Cerrando la aplicación...");
@@ -88,6 +95,9 @@ public class CalculaNominas {
         }
     }
 
+    /**
+     * Muestra por consola la información de todos los empleados almacenados en la base de datos.
+     */
     private void menuMostrarTodos() {
         List<Empleado> empleados = servicio.obtenerTodos();
         if (empleados.isEmpty()) {
@@ -100,6 +110,9 @@ public class CalculaNominas {
         }
     }
 
+    /**
+     * Solicita un DNI y muestra el salario del empleado correspondiente.
+     */
     private void menuMostrarSalario() {
         System.out.print("Introduce el DNI del empleado: ");
         String dni = scanner.nextLine();
@@ -111,6 +124,10 @@ public class CalculaNominas {
         }
     }
 
+    /**
+     * Muestra un submenú que permite modificar los datos (nombre, categoría o antigüedad)
+     * de un empleado específico.
+     */
     private void menuModificarEmpleado() {
         System.out.print("Introduce el DNI del empleado a modificar: ");
         String dni = scanner.nextLine();
@@ -154,6 +171,10 @@ public class CalculaNominas {
         }
     }
 
+    /**
+     * Solicita un DNI y recalcula el sueldo del emplead,
+     * actualizándolo en la base de datos.
+     */
     private void menuRecalcularSueldoIndividual() {
         System.out.print("Introduce el DNI del empleado: ");
         String dni = scanner.nextLine();
@@ -166,6 +187,10 @@ public class CalculaNominas {
         }
     }
 
+    /**
+     * Recalcula y actualiza el sueldo de todos los empleados presentes
+     * en la base de datos.
+     */
     private void menuRecalcularTodosLosSueldos() {
         List<Empleado> todos = servicio.obtenerTodos();
         for (Empleado emp : todos) {
@@ -174,7 +199,10 @@ public class CalculaNominas {
         System.out.println("Se han recalculado y sincronizado todas las nóminas de la BD.");
     }
 
-    // Método de apoyo para registrar empleados desde la consola (Apartado 3)
+    /**
+     * Método de apoyo para registrar empleados desde la consola.
+     * Solicita los datos de un nuevo empleado y lo guarda en el sistema.
+     */
     private void menuAltaIndividual() {
         try {
             System.out.print("Nombre completo: ");
