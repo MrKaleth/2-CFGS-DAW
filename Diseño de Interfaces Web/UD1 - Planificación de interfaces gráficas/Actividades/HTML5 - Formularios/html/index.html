@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro y Contacto Completo</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+
+<body>
+    <button id="themeToggle">🌙 Modo oscuro</button>
+
+    <div class="container">
+        <h1>Formulario de Contacto</h1>
+
+        <!-- Action conectado directamente a la URL de tu tarea -->
+        <form id="registroForm" action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post">
+
+            <!-- Grupo 1: Datos Personales Básicos -->
+            <fieldset>
+                <legend>Datos Personales</legend>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required minlength="2">
+                <span class="error" id="errorNombre"></span>
+
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+                <span class="error" id="errorApellidos"></span>
+
+                <!-- W3SCHOOLS POSIBILIDAD: Radio Buttons (Selección única) -->
+                <label>Género:</label>
+                <div class="radio-group">
+                    <input type="radio" id="generoM" name="genero" value="masculino" required>
+                    <label for="generoM">Masculino</label>
+                    <input type="radio" id="generoF" name="genero" value="femenino">
+                    <label for="generoF">Femenino</label>
+                    <input type="radio" id="generoO" name="genero" value="otro">
+                    <label for="generoO">Otro</label>
+                </div>
+
+                <label for="fecha">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                <span class="error" id="errorFecha"></span>
+
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad" min="18" max="100" required>
+                <span class="error" id="errorEdad"></span>
+
+                <label for="pais">País:</label>
+                <select id="pais" name="pais" required>
+                    <option value="">Selecciona un país</option>
+                    <option value="es">España</option>
+                    <option value="mx">México</option>
+                    <option value="ar">Argentina</option>
+                    <option value="co">Colombia</option>
+                </select>
+                <span class="error" id="errorPais"></span>
+            </fieldset>
+
+            <!-- Grupo 2: Información de Contacto -->
+            <fieldset>
+                <legend>Contacto e Intereses</legend>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error" id="errorEmail"></span>
+
+                <!-- VALIDACIÓN CON PATTERN: Exige exactamente 9 dígitos numéricos (Estilo España) -->
+                <label for="telefono">Teléfono (9 dígitos):</label>
+                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" placeholder="612345678" required>
+                <span class="error" id="errorTelefono"></span>
+
+                <label for="web">Página Web:</label>
+                <input type="url" id="web" name="web" placeholder="https://example.com">
+                <span class="error" id="errorWeb"></span>
+
+                <!-- W3SCHOOLS POSIBILIDAD: Datalist (Sugerencias de autocompletado) -->
+                <label for="interes">Tema de Interés Principal:</label>
+                <input list="intereses" id="interes" name="interes">
+                <datalist id="intereses">
+                    <option value="Diseño Web">
+                    <option value="Desarrollo Front-End">
+                    <option value="Backend y Servidores">
+                    <option value="Seguridad Informática">
+                </datalist>
+            </fieldset>
+
+            <!-- Grupo 3: Seguridad -->
+            <fieldset>
+                <legend>Seguridad de la Cuenta</legend>
+
+                <label for="password">Contraseña:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required minlength="6">
+                    <button type="button" class="togglePassword">👁️</button>
+                </div>
+                <span class="error" id="errorPassword"></span>
+
+                <label for="confirmPassword">Confirmar Contraseña:</label>
+                <div class="password-container">
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <button type="button" class="togglePassword">👁️</button>
+                </div>
+                <span class="error" id="errorConfirmPassword"></span>
+            </fieldset>
+
+            <!-- Grupo 4: Preferencias y Archivos de Usuario -->
+            <fieldset>
+                <legend>Preferencias y Archivos</legend>
+
+                <!-- W3SCHOOLS POSIBILIDAD: Input type="range" (Deslizador) -->
+                <label for="satisfaccion">Nivel de experiencia previo (1 al 10):</label>
+                <input type="range" id="satisfaccion" name="satisfaccion" min="1" max="10" value="5">
+
+                <!-- W3SCHOOLS POSIBILIDAD: Input type="color" (Selector de color) -->
+                <label for="colorPersonalizado">Color de interfaz preferido:</label>
+                <input type="color" id="colorPersonalizado" name="colorPersonalizado" value="#ff0000">
+
+                <!-- W3SCHOOLS POSIBILIDAD: Input type="file" (Subida de archivos) -->
+                <label for="Curriculum">Adjuntar Currículum (PDF/Imagen):</label>
+                <input type="file" id="Curriculum" name="curriculum" accept=".pdf, image/*">
+
+                <!-- W3SCHOOLS POSIBILIDAD: Textarea (Comentarios multilínea) -->
+                <label for="mensaje">Mensaje o Comentarios adicionales:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" cols="50"
+                    placeholder="Escribe aquí tus comentarios..."></textarea>
+            </fieldset>
+
+            <!-- Términos legales -->
+            <div class="terms-container">
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos" class="ter1">Acepto los términos y condiciones de privacidad</label>
+                <span class="error" id="errorTerminos"></span>
+            </div>
+
+            <!-- W3SCHOOLS POSIBILIDAD: Botones obligatorios de Submit y Reset -->
+            <div class="btn-group">
+                <input type="submit" value="Enviar Formulario">
+                <input type="reset" value="Restablecer Campos">
+            </div>
+        </form>
+        <div id="resultado"></div>
+    </div>
+
+    <!-- <script src="myscript.js"></script> -->
+</body>
+
+</html>
