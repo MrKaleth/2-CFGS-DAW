@@ -2,7 +2,12 @@
 	"folders": [
 		{
 			"path": "Desarrollo Web en Entorno Cliente"
+		},
+		{
+			"path": "Diseño de Interfaces Web"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Diseño de Interfaces Web"
+	}
 }
