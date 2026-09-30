@@ -14,7 +14,6 @@
     <div class="container">
         <h1>Formulario de Contacto</h1>
 
-        <!-- Action conectado directamente a la URL de tu tarea -->
         <form id="registroForm" action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post">
 
             <!-- Grupo 1: Datos Personales Básicos -->
@@ -29,7 +28,6 @@
                 <input type="text" id="apellidos" name="apellidos" required>
                 <span class="error" id="errorApellidos"></span>
 
-                <!-- W3SCHOOLS POSIBILIDAD: Radio Buttons (Selección única) -->
                 <label>Género:</label>
                 <div class="radio-group">
                     <input type="radio" id="generoM" name="genero" value="masculino" required>
@@ -57,6 +55,13 @@
                     <option value="co">Colombia</option>
                 </select>
                 <span class="error" id="errorPais"></span>
+
+
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="DNI" pattern="[0-9]{8}[A-Za-z]"
+                    title="Debe introducir 8 números seguidos de una letra" required><br><br>
+                <input type="submit" value="Enviar">
+
             </fieldset>
 
             <!-- Grupo 2: Información de Contacto -->
@@ -67,7 +72,6 @@
                 <input type="email" id="email" name="email" required>
                 <span class="error" id="errorEmail"></span>
 
-                <!-- VALIDACIÓN CON PATTERN: Exige exactamente 9 dígitos numéricos (Estilo España) -->
                 <label for="telefono">Teléfono (9 dígitos):</label>
                 <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" placeholder="612345678" required>
                 <span class="error" id="errorTelefono"></span>
@@ -76,7 +80,6 @@
                 <input type="url" id="web" name="web" placeholder="https://example.com">
                 <span class="error" id="errorWeb"></span>
 
-                <!-- W3SCHOOLS POSIBILIDAD: Datalist (Sugerencias de autocompletado) -->
                 <label for="interes">Tema de Interés Principal:</label>
                 <input list="intereses" id="interes" name="interes">
                 <datalist id="intereses">
@@ -84,6 +87,8 @@
                     <option value="Desarrollo Front-End">
                     <option value="Backend y Servidores">
                     <option value="Seguridad Informática">
+                    <option value="Desarrollo de Aplicaciones Móviles - Android"></option>
+                    <option value="Desarrollo de Aplicaciones Móviles - iOS"></option>
                 </datalist>
             </fieldset>
 
@@ -110,32 +115,26 @@
             <fieldset>
                 <legend>Preferencias y Archivos</legend>
 
-                <!-- W3SCHOOLS POSIBILIDAD: Input type="range" (Deslizador) -->
                 <label for="satisfaccion">Nivel de experiencia previo (1 al 10):</label>
                 <input type="range" id="satisfaccion" name="satisfaccion" min="1" max="10" value="5">
 
-                <!-- W3SCHOOLS POSIBILIDAD: Input type="color" (Selector de color) -->
                 <label for="colorPersonalizado">Color de interfaz preferido:</label>
                 <input type="color" id="colorPersonalizado" name="colorPersonalizado" value="#ff0000">
 
-                <!-- W3SCHOOLS POSIBILIDAD: Input type="file" (Subida de archivos) -->
                 <label for="Curriculum">Adjuntar Currículum (PDF/Imagen):</label>
                 <input type="file" id="Curriculum" name="curriculum" accept=".pdf, image/*">
 
-                <!-- W3SCHOOLS POSIBILIDAD: Textarea (Comentarios multilínea) -->
                 <label for="mensaje">Mensaje o Comentarios adicionales:</label>
                 <textarea id="mensaje" name="mensaje" rows="4" cols="50"
                     placeholder="Escribe aquí tus comentarios..."></textarea>
             </fieldset>
 
-            <!-- Términos legales -->
             <div class="terms-container">
                 <input type="checkbox" id="terminos" name="terminos" required>
                 <label for="terminos" class="ter1">Acepto los términos y condiciones de privacidad</label>
                 <span class="error" id="errorTerminos"></span>
             </div>
 
-            <!-- W3SCHOOLS POSIBILIDAD: Botones obligatorios de Submit y Reset -->
             <div class="btn-group">
                 <input type="submit" value="Enviar Formulario">
                 <input type="reset" value="Restablecer Campos">
@@ -144,7 +143,6 @@
         <div id="resultado"></div>
     </div>
 
-    <!-- <script src="myscript.js"></script> -->
 </body>
 
 </html>
