@@ -10,6 +10,7 @@ import java.util.Scanner;
 /**
  * Clase principal que gestiona la interfaz de usuario por consola.
  * Permite interactuar con el sistema de control de nóminas a través de un menú.
+ *
  * @author Darío Bonilla
  * @version 2.0
  */

@@ -101,7 +101,6 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
                 String dni = rs.getString("dni");
                 String nombre = rs.getString("nombre");
                 int categoria = rs.getInt("categoria");
-                // Corregido: Se mapea con la etiqueta 'anyos' devuelta por MariaDB
                 int anyos = rs.getInt("anyos");
                 try {
                     Empleado emp = new Empleado(sexo, dni, nombre, categoria, anyos);
@@ -131,7 +130,6 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
                     Character sexo = rs.getString("sexo").charAt(0);
                     String nombre = rs.getString("nombre");
                     int categoria = rs.getInt("categoria");
-                    // Corregido: Se mapea con la etiqueta 'anyos' devuelta por MariaDB
                     int anyos = rs.getInt("anyos");
                     empleadoEncontrado = new Empleado(sexo, dni, nombre, categoria, anyos);
                 }

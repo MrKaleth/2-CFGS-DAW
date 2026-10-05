@@ -28,18 +28,18 @@ public class CalculaNominas {
             Empleado e1 = new Empleado('M', "32000032G", "James Cosling", 4, 7);
             Empleado e2 = new Empleado('F', "32000031R", "Ada Lovelace");
 
-            System.out.println("--- DATOS INICIALES ---");
+            System.out.println("\n--- DATOS INICIALES ---");
             f.escribe(e1);
             f.escribe(e2);
 
             e2.incrAnyo();
             e1.setCategoria(9);
 
-            System.out.println("--- DATOS MODIFICADOS ---");
+            System.out.println("\n--- DATOS MODIFICADOS ---");
             f.escribe(e1);
             f.escribe(e2);
 
-            System.out.println("--- EMPLEADO CON ERROR ---");
+            System.out.println("\n--- EMPLEADO CON ERROR ---");
             Empleado e3 = new Empleado('M', "32000032C", "John Huges", 11, 25);
             f.escribe(e3);
 
