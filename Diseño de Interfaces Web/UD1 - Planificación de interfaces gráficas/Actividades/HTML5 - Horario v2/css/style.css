@@ -1,0 +1,113 @@
+/* Estilos generales */
+
+body {
+    margin: 0;
+    padding: 30px;
+    background-color: #100d1c;
+    color: #eeeeee;
+    font-family: Arial, sans-serif;
+}
+
+/* Títulos */
+
+h1 {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-left: 5px solid #00aaff;
+    border-radius: 8px;
+    background-color: #21163d;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 35px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #00aaff;
+    color: #8ab4ff;
+}
+
+/* Tabla */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #5635a5;
+    background-color: #19152b;
+}
+
+th {
+    padding: 14px 10px;
+    border: 1px solid #7655c7;
+    background-color: #4b2585;
+    color: white;
+}
+
+td {
+    padding: 14px 10px;
+    border: 1px solid #3d2b70;
+    color: #dddddd;
+    text-align: center;
+}
+
+td:first-child {
+    background-color: #241d3d;
+    color: #8ab4ff;
+    font-weight: bold;
+}
+
+/* Efecto al pasar el ratón */
+
+td:hover {
+    background-color: #30245b;
+    color: white;
+}
+
+/* Fila del recreo */
+
+tbody tr:nth-child(4) td {
+    background-color: #152e49;
+    color: #00baff;
+    font-weight: bold;
+}
+
+/* Lista del profesorado */
+
+ul {
+    padding: 20px 35px;
+    border-left: 4px solid #7c4dff;
+    border-radius: 6px;
+    background-color: #19152b;
+}
+
+li {
+    margin: 10px 0;
+    color: #dddddd;
+}
+
+li strong {
+    color: #a77bff;
+}
+
+/* Imagen */
+
+body > a {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+    padding: 8px;
+    border: 2px solid #5635a5;
+    border-radius: 8px;
+    background-color: #19152b;
+}
+
+body > a:hover {
+    border-color: #00aaff;
+}
+
+body img {
+    display: block;
+    max-width: 220px;
+    height: auto;
+    border-radius: 5px;
+}
