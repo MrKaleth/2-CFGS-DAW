@@ -1,0 +1,62 @@
+/* Diseño fijo centrado */
+body {
+    width: 960px;
+    margin: 0 auto;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+}
+
+/* Encabezado principal */
+h1 {
+    text-align: center;
+}
+
+/* Contenedor principal */
+#contenido {
+    width: 960px;
+    overflow: hidden;
+}
+
+/* Columna izquierda */
+#datos {
+    width: 260px;
+    float: left;
+}
+
+/* Columna derecha */
+#informacion {
+    width: 700px;
+    float: left;
+}
+
+/* Títulos de las secciones */
+h2 {
+    font-size: 1.2em;
+}
+
+/* Imagen de la portada */
+#datos img {
+    display: block;
+    width: 200px;
+    height: auto;
+    margin: 10px auto;
+}
+
+/* Comentarios destacados */
+#comentarios h2 {
+    text-align: center;
+}
+
+/* Cada comentario ocupa un tercio del ancho */
+#comentarios p {
+    width: 220px;
+    float: left;
+    margin: 0 6px;
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+/* Evitar que el contenido siguiente flote junto a los comentarios */
+#comentarios {
+    overflow: hidden;
+}
