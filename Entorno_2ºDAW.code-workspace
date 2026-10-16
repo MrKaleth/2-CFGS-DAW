@@ -5,9 +5,12 @@
 		},
 		{
 			"path": "Diseño de Interfaces Web"
+		},
+		{
+			"path": "Proyecto Intermodular"
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "Desarrollo Web en Entorno Cliente"
+		"liveServer.settings.multiRootWorkspaceName": "Proyecto Intermodular"
 	}
 }
