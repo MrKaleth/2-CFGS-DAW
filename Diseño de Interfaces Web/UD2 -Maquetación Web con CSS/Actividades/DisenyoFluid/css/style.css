@@ -1,0 +1,52 @@
+body {
+    width: 80%;
+    margin: 0 auto;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1em;
+}
+
+h1 {
+    text-align: center;
+}
+
+#contenido {
+    width: 100%;
+    overflow: hidden;
+}
+
+#datos {
+    width: 25%;
+    float: left;
+}
+
+#informacion {
+    width: 75%;
+    float: left;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+#datos img {
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 0.625em auto;
+}
+
+#comentarios h2 {
+    text-align: center;
+}
+
+#comentarios p {
+    width: 31.33%;
+    float: left;
+    margin: 0 1%;
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+#comentarios {
+    overflow: hidden;
+}

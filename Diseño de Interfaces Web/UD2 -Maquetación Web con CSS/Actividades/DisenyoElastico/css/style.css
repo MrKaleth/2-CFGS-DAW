@@ -1,0 +1,61 @@
+body {
+    width: 60em;
+    /* 960px / 16 */
+    margin: 0 auto;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1em;
+    /* 16px / 16 */
+}
+
+h1 {
+    text-align: center;
+}
+
+#contenido {
+    width: 60em;
+    /* 960px / 16 */
+    overflow: hidden;
+}
+
+#datos {
+    width: 16.25em;
+    /* 260px / 16 */
+    float: left;
+}
+
+#informacion {
+    width: 43.75em;
+    /* 700px / 16 */
+    float: left;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+#datos img {
+    display: block;
+    width: 12.5em;
+    /* 200px / 16 */
+    height: auto;
+    margin: 0.625em auto;
+    /* 10px / 16 */
+}
+
+#comentarios h2 {
+    text-align: center;
+}
+
+#comentarios p {
+    width: 13.75em;
+    /* 220px / 16 */
+    float: left;
+    margin: 0 0.375em;
+    /* 6px / 16 */
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+#comentarios {
+    overflow: hidden;
+}
