@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Contador = () => {
+export const Contador = ({ total }) => {
     return (
         <>
-            <h2>Participantes. (<span id="total">0</span>)</h2>
+            <h2>Participantes. (<span>{total}</span>)</h2>
         </>
     )
 }
