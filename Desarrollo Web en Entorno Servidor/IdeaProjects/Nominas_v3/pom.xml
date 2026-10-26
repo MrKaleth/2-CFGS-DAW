@@ -1,28 +1,104 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.example</groupId>
-  <artifactId>Repaso_EjNominas</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>Archetype - Repaso_EjNominas</name>
-  <url>http://maven.apache.org</url>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.example</groupId>
+    <artifactId>Repaso_EjNominas</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Archetype - Repaso_EjNominas</name>
+    <url>http://maven.apache.org</url>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.30</version> <!-- Cambia a esta versión -->
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mariadb.jdbc</groupId>
-      <artifactId>mariadb-java-client</artifactId>
-      <version>3.4.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-nop</artifactId>
-      <version>2.0.7</version>
-    </dependency>
-  </dependencies>
+    <!-- 1. IMPORTANTE: Cambiamos a WAR porque es una aplicación web para Tomcat -->
+    <packaging>war</packaging>
+
+    <!-- 2. Propiedades: Establecemos Java 17 por defecto (puedes cambiarlo a 21 si usas esa) -->
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- TUS DEPENDENCIAS ORIGINALES -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>2.0.7</version>
+        </dependency>
+
+        <!-- 3. DEPENDENCIAS AÑADIDAS PARA LA WEB (Tomcat 10 / Jakarta EE) -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSTL para hacer bucles "if" y "for" en los archivos JSP sin usar Java puro -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 4. PLUGINS AÑADIDOS (Compilación, WAR y JAVADOC) -->
+    <build>
+        <plugins>
+            <!-- Plugin compilador adaptado para que no falle con Lombok -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.30</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <!-- Plugin WAR para evitar el error "Falta web.xml" (usaremos anotaciones @WebServlet) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <!-- 5. PLUGIN PARA GENERAR EL JAVADOC (Requisito de la práctica) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <!-- Esto creará una carpeta llamada "documentacion_javadoc" en la raíz de tu proyecto con el resultado -->
+                    <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
+                    <destDir>documentacion_javadoc</destDir>
+                    <!-- Ignora errores estrictos del doc si te falta documentar algún parámetro -->
+                    <doclint>none</doclint>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -27,6 +27,12 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
      * @throws SQLException Si ocurre algún error al conectar con la base de datos.
      */
     private Connection obtenerConexion() throws SQLException {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver de MariaDB no encontrado: " + e.getMessage());
+        }
+
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 

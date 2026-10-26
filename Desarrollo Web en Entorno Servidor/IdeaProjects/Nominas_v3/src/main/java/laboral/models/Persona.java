@@ -1,5 +1,8 @@
 package laboral.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Representa a una persona dentro del sistema laboral.
  *
@@ -7,19 +10,26 @@ package laboral.models;
  * @version 1.0
  */
 public class Persona {
+
     /**
      * Nombre de la persona.
      */
+    @Setter
+    @Getter
     public String nombre;
 
     /**
      * El Documento Nacional de Identidad (DNI) de la persona.
      */
+    @Setter
+    @Getter
     public String dni;
 
     /**
      * Género de la persona.
      */
+    @Setter
+    @Getter
     public Character sexo;
 
     /**
@@ -45,15 +55,6 @@ public class Persona {
     public Persona(String nombre, Character sexo) {
         this.nombre = nombre;
         this.sexo = sexo;
-    }
-
-    /**
-     * Asigna o actualiza el Documento Nacional de Identidad (DNI) de la persona.
-     *
-     * @param dni El nuevo DNI que se desea asignar.
-     */
-    public void setDni(String dni) {
-        this.dni = dni;
     }
 
     /**

@@ -1,6 +1,8 @@
 package laboral.models;
 
 import laboral.exceptions.DatosNoCorrectosException;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Representa a un empleado dentro del sistema laboral, heredando los datos básicos de una persona.
@@ -13,12 +15,26 @@ public class Empleado extends Persona {
 
     /**
      * La categoría profesional del empleado (debe estar comprendida entre 1 y 10).
+     * -- GETTER --
+     *  Obtiene la categoría profesional del empleado.
+     *
+     *
+     * -- SETTER --
+     *  Modifica la categoría profesional del empleado.
+     *
+     @return Un número entero que representa la categoría.
+      * @param categoria La nueva categoría que se desea asignar.
+
      */
+    @Setter
+    @Getter
     private int categoria;
 
     /**
      * Los años de experiencia o antigüedad que el empleado lleva trabajados en la empresa.
      */
+    @Setter
+    @Getter
     public int anyosTrabajados;
 
     /**
@@ -51,24 +67,6 @@ public class Empleado extends Persona {
         validaEmpleado(categoria, anyosTrabajados);
         this.categoria = categoria;
         this.anyosTrabajados = anyosTrabajados;
-    }
-
-    /**
-     * Obtiene la categoría profesional del empleado.
-     *
-     * @return Un número entero que representa la categoría.
-     */
-    public int getCategoria() {
-        return categoria;
-    }
-
-    /**
-     * Modifica la categoría profesional del empleado.
-     *
-     * @param categoria La nueva categoría que se desea asignar.
-     */
-    public void setCategoria(int categoria) {
-        this.categoria = categoria;
     }
 
     /**
