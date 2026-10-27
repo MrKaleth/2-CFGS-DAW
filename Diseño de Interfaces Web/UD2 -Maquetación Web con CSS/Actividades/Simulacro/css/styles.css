@@ -1,0 +1,168 @@
+/* ===== Reset básico ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12px;
+    margin: 20px;
+}
+
+a {
+    color: blue;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ===== Cabecera ===== */
+.cabecera {
+    position: relative;
+    /* referencia para el botón absoluto */
+    height: 100px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.cabecera h1 {
+    position: absolute;
+    top: 21px;
+    left: 5%;
+    width: 15%;
+    height: 30px;
+    line-height: 28px;
+    background-color: blue;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+.boton-buscar {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 10%;
+    height: 16px;
+    line-height: 14px;
+    background-color: red;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+/* ===== Menú horizontal ===== */
+.menu {
+    height: 67px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    margin-bottom: 21px;
+}
+
+.menu ul li {
+    float: left;
+    width: 23.5%;
+    height: 14px;
+    line-height: 12px;
+    margin-right: 0.3%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* ===== Cuerpo ===== */
+.cuerpo {
+    height: 310px;
+    margin-bottom: 20px;
+}
+
+/* Barra lateral izquierda */
+.lateral {
+    float: left;
+    width: 30%;
+    height: 310px;
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+.lateral ul li {
+    height: 30px;
+    padding-top: 1px;
+}
+
+/* Contenido central (verde) */
+.contenido {
+    float: right;
+    width: 67%;
+    height: 310px;
+    padding: 15px;
+    background-color: #00ff55;
+    border-radius: 5px;
+}
+
+.imagen-central {
+    float: left;
+    width: 41.5%;
+    height: 279px;
+    background-color: #00ffee;
+    border-top: 1px solid #555;
+    border-left: 1px solid #555;
+    border-radius: 5px;
+}
+
+.texto-central {
+    float: right;
+    width: 56.5%;
+    height: 279px;
+    background-color: #00ffee;
+    border-radius: 5px;
+}
+
+.texto-central h2 {
+    font-size: 14px;
+    margin: 16px 0 14px;
+}
+
+/* ===== Pie de página ===== */
+.pie {
+    height: 134px;
+    background-color: pink;
+    border-radius: 5px;
+}
+
+.caja {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.caja-direccion {
+    float: left;
+    width: 10%;
+    height: 108px;
+    margin: 15px 0 0 2%;
+}
+
+.caja-nombre {
+    float: left;
+    width: 25%;
+    height: 40px;
+    margin: 19px 0 0 23%;
+}
+
+.caja-imagenes {
+    float: right;
+    width: 25%;
+    height: 107px;
+    margin-top: 18px;
+}
