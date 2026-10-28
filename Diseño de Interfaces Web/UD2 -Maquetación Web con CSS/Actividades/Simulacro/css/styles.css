@@ -8,7 +8,7 @@
 body {
     font-family: "Times New Roman", Times, serif;
     font-size: 12px;
-    margin: 20px;
+    margin: 20px 8%;
 }
 
 a {
@@ -165,4 +165,5 @@ ul {
     width: 25%;
     height: 107px;
     margin-top: 18px;
+    margin-right: 2%
 }

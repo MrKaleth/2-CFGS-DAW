@@ -1,0 +1,175 @@
+/* ===== Reset básico (Igual al anterior) ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    background-color: #ffffff;
+    margin: 40px 20%;
+    /* Margen lateral para encuadrar la página */
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+/* ===== Cabecera ===== */
+#cabecera {
+    position: relative;
+    /* Referencia obligatoria para el posicionamiento absoluto */
+    height: 90px;
+    background-color: #c6894c;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#logo {
+    position: absolute;
+    top: 25px;
+    left: 4%;
+    width: 20%;
+    height: 40px;
+    line-height: 38px;
+    background-color: #dfb283;
+    color: #4a2e1b;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #7d4f27;
+    border-radius: 5px;
+}
+
+#acceso {
+    position: absolute;
+    top: 32px;
+    right: 4%;
+    width: 35%;
+    height: 30px;
+}
+
+#acceso input {
+    float: left;
+    width: 70%;
+    height: 100%;
+    padding-left: 10px;
+    border: 1px solid #7d4f27;
+    border-radius: 4px 0 0 4px;
+}
+
+#acceso button {
+    float: right;
+    width: 30%;
+    height: 100%;
+    background-color: #653c17;
+    color: white;
+    border: 1px solid #7d4f27;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+/* ===== Menú horizontal ===== */
+#menu {
+    height: 60px;
+    background-color: #dfb283;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+#menu div {
+    float: left;
+    width: 25%;
+    /* 4 elementos repartidos equitativamente */
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+#menu div a:hover {
+    font-weight: bold;
+}
+
+/* ===== Cuerpo (Izquierda + Derecha) ===== */
+/* Barra lateral izquierda */
+#izquierda {
+    float: left;
+    width: 23%;
+    height: 520px;
+    /* Altura rígida forzada */
+    background-color: #dfb283;
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#izquierda h3 {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #3b220f;
+}
+
+#izquierda a {
+    display: block;
+    /* Se comportan como bloques uno debajo del otro */
+    margin-bottom: 25px;
+    color: #3b220f;
+}
+
+/* Contenido central / derecho */
+#derecha {
+    float: right;
+    width: 74%;
+    height: 520px;
+    /* Misma altura rígida para encajar en paralelo */
+    background-color: #dfb283;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+#portada {
+    /* Mantenemos tu espacio reservado vacío a la izquierda */
+    float: left;
+    width: 0%;
+}
+
+#resumen {
+    float: right;
+    width: 100%;
+    /* Toma todo el ancho ya que no hay una imagen cargada ocupando espacio visual */
+    color: #3b220f;
+}
+
+#resumen h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+#resumen p {
+    text-align: justify;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* ===== Pie de página ===== */
+#pie {
+    clear: both;
+    /* Fuerza a romper los floats del cuerpo para que no se solape */
+    height: 100px;
+    background-color: #925c2b;
+    border-radius: 8px;
+}
+
+.contpie {
+    float: left;
+    width: 33.33%;
+    /* Tres columnas iguales perfectas */
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
