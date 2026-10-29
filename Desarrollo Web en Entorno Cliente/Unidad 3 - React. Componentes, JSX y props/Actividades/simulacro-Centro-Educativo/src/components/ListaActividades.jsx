@@ -1,7 +1,7 @@
 import React from 'react'
 import { Actividad } from './Actividad'
 
-export const ListaActividades = ({ actividades, titulo}) => {
+export const ListaActividades = ({ actividades, titulo }) => {
     return (
         <>
             <h3>{titulo} <span>({actividades.length})</span></h3>
