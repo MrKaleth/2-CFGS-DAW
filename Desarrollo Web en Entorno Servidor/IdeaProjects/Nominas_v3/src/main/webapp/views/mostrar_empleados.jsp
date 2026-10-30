@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!-- Importamos JSTL para poder hacer el bucle forEach -->
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
@@ -18,7 +17,7 @@
                 <div class="msg-info">No hay empleados registrados en la base de datos.</div>
             </c:when>
             <c:otherwise>
-                <!-- Información tabulada y ordenada (Requisito) -->
+
                 <table>
                     <thead>
                         <tr>
@@ -30,7 +29,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Bucle que recorre la lista que le envió el Servlet -->
                         <c:forEach var="emp" items="${empleados}">
                             <tr>
                                 <td>${emp.dni}</td>
@@ -46,7 +44,6 @@
         </c:choose>
 
         <br>
-        <!-- Botón volver (0,5 puntos) -->
         <a href="${pageContext.request.contextPath}/index.jsp" class="btn-volver">Volver al Menú Principal</a>
     </div>
 </body>

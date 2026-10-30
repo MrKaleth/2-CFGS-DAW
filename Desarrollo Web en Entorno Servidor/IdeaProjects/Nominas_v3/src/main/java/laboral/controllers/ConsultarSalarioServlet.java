@@ -32,19 +32,15 @@ public class ConsultarSalarioServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 1. Recogemos el DNI que el usuario ha escrito en el formulario
         String dni = req.getParameter("dni");
 
         try {
-            // 2. Usamos tu método del año pasado para sacar el sueldo
             int salario = servicio.obtenerSalarioPorDni(dni);
 
-            // Si devuelve -1, es que el empleado no existe
             if (salario == -1) {
                 req.setAttribute("mensajeError", "No se ha encontrado ningún empleado con el DNI: " + dni);
                 req.getRequestDispatcher("views/error.jsp").forward(req, resp);
             } else {
-                // 3. Si existe, guardamos los datos y vamos a la vista
                 req.setAttribute("dniBuscado", dni);
                 req.setAttribute("salarioEncontrado", salario);
                 req.getRequestDispatcher("views/mostrar_salario.jsp").forward(req, resp);

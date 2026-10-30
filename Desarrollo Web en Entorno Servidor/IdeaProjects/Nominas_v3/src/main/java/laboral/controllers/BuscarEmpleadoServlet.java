@@ -42,12 +42,10 @@ public class BuscarEmpleadoServlet extends HttpServlet {
             List<Empleado> todos = servicio.obtenerTodos();
             List<Empleado> resultados = new ArrayList<>();
 
-            // Si hay criterio, filtramos. Si no, devolvemos la lista vacía o todos.
             if (criterio != null && !criterio.trim().isEmpty()) {
                 String busqueda = criterio.toLowerCase().trim();
 
                 for (Empleado emp : todos) {
-                    // Busca coincidencias en cualquier campo del empleado
                     if (emp.getDni().toLowerCase().contains(busqueda) ||
                             emp.getNombre().toLowerCase().contains(busqueda) ||
                             String.valueOf(emp.getSexo()).toLowerCase().contains(busqueda) ||

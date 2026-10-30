@@ -21,7 +21,6 @@ h1, h2 {
     padding-bottom: 10px;
 }
 
-/* Estilos para tabular la información (Requisito de la práctica) */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -43,7 +42,6 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Formularios */
 .form-group {
     margin-bottom: 15px;
 }
@@ -69,7 +67,6 @@ input[type="submit"]:hover {
     background-color: #27ae60;
 }
 
-/* Botón Volver y Enlaces */
 .btn-volver {
     display: inline-block;
     margin-top: 20px;
@@ -107,7 +104,6 @@ ul.menu li a:hover {
     background-color: #bdc3c7;
 }
 
-/* Mensajes de información y error */
 .msg-info {
     background-color: #d1ecf1;
     color: #0c5460;

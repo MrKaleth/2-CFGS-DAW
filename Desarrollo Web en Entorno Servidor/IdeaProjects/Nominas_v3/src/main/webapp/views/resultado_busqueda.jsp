@@ -37,7 +37,7 @@
                                 <td>${emp.categoria}</td>
                                 <td>${emp.anyosTrabajados}</td>
                                 <td>
-                                    <!-- Enlace funcional para modificar el empleado -->
+
                                     <a href="${pageContext.request.contextPath}/ModificarEmpleado?dni=${emp.dni}"
                                        style="background:#f39c12; color:white; padding:5px 10px; text-decoration:none; border-radius:3px; display:inline-block;">
                                        Modificar

@@ -35,14 +35,10 @@ public class MostrarEmpleadosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            // 1. Obtenemos los datos usando tu código del año pasado
             List<Empleado> listaEmpleados = servicio.obtenerTodos();
-            // 2. Guardamos la lista en la "request" para que la página web pueda leerla
             req.setAttribute("empleados", listaEmpleados);
-            // 3. Redirigimos a la página JSP que dibujará la tabla
             req.getRequestDispatcher("views/mostrar_empleados.jsp").forward(req, resp);
         } catch (Exception e) {
-            // Requisito: Mensajes de información y error (0,5 puntos)
             req.setAttribute("mensajeError", "Error al cargar los empleados: " + e.getMessage());
             req.getRequestDispatcher("views/error.jsp").forward(req, resp);
         }

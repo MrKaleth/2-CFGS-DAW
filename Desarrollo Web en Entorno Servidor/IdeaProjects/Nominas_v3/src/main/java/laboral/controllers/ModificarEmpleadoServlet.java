@@ -68,13 +68,8 @@ public class ModificarEmpleadoServlet extends HttpServlet {
             int categoria = Integer.parseInt(req.getParameter("categoria"));
             int anyos = Integer.parseInt(req.getParameter("anyos"));
 
-            // El constructor lanza DatosNoCorrectosException si la categoría no es 1-10
             Empleado emp = new Empleado(sexo, dni, nombre, categoria, anyos);
-
-            // El método altaEmpleado hace el UPDATE en BD y recalcula el sueldo automáticamente
             servicio.altaEmpleado(emp);
-
-            // Redirigimos a la lista principal para ver los cambios
             resp.sendRedirect(req.getContextPath() + "/MostrarEmpleados");
 
         } catch (Exception e) {
