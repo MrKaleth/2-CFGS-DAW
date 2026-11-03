@@ -1,7 +1,7 @@
 import React from 'react'
 import { Participante } from './Participante'
 
-export const ListaParticipantes = ({ participantes, titulo, eliminarParticipante }) => {
+export const ListaParticipantes = ({ participantes, titulo, eliminarParticipante, eliminar }) => {
     return (
         <>
             <h3>{titulo}</h3>
@@ -10,7 +10,7 @@ export const ListaParticipantes = ({ participantes, titulo, eliminarParticipante
                     <ul>
                         {participantes.map(
                             participante => <Participante key={participante.id} participante={participante}
-                                eliminarParticipante={eliminarParticipante} />)}
+                                eliminarParticipante={eliminarParticipante} eliminar={eliminar} />)}
                     </ul>
             }
         </>

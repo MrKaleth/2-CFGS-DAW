@@ -25,8 +25,10 @@ export const App = () => {
             <Cabecera />
             <FormularioRegistro anyadirParticipante={anyadirParticipante} nextId={listaParticipantes.length + 1} />
             <Contador total={listaParticipantes.length} />
-            <ListaParticipantes participantes={listaParticipantes} titulo="Lista de Participantes" eliminarParticipante={eliminarParticipante} />
-            <ListaParticipantes participantes={listaParticipantesComprobados} titulo="Lista de Participantes Comprobados" eliminarParticipante={eliminarParticipante} />
+            <ListaParticipantes participantes={listaParticipantes} titulo="Lista de Participantes"
+                eliminarParticipante={eliminarParticipante} eliminar={true} />
+            <ListaParticipantes participantes={listaParticipantesComprobados} titulo="Lista de Participantes Comprobados"
+                eliminarParticipante={eliminarParticipante} eliminar={false} />
         </>
     )
 }
