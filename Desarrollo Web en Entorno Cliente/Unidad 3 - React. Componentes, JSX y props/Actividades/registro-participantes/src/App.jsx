@@ -16,13 +16,17 @@ export const App = () => {
 
     }
 
+    const eliminarParticipante = (id) => {
+        setListaParticipantes(listaParticipantes => listaParticipantes.filter(p => p.id !== id))
+    }
+
     return (
         <>
             <Cabecera />
             <FormularioRegistro anyadirParticipante={anyadirParticipante} nextId={listaParticipantes.length + 1} />
             <Contador total={listaParticipantes.length} />
-            <ListaParticipantes participantes={listaParticipantes} titulo="Lista de Participantes" />
-            <ListaParticipantes participantes={listaParticipantesComprobados} titulo="Lista de Participantes Comprobados" />
+            <ListaParticipantes participantes={listaParticipantes} titulo="Lista de Participantes" eliminarParticipante={eliminarParticipante} />
+            <ListaParticipantes participantes={listaParticipantesComprobados} titulo="Lista de Participantes Comprobados" eliminarParticipante={eliminarParticipante} />
         </>
     )
 }

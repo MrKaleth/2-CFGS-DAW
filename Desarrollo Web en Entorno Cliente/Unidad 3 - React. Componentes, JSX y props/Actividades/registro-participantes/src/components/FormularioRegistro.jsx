@@ -21,27 +21,29 @@ export const FormularioRegistro = ({ anyadirParticipante, nextId }) => {
     }
 
     return (
-        <form id="registro" onSubmit={manejarEnvio} noValidate>
-            <label htmlFor="nombre">Nombre:</label>
-            <input
-                type="text"
-                id="nombre"
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                required
-            />
+        <>
+            <form id="registro" onSubmit={manejarEnvio} noValidate>
+                <label htmlFor="nombre">Nombre:</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    required
+                />
 
-            <label htmlFor="email">Correo electrónico:</label>
-            <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
+                <label htmlFor="email">Correo electrónico:</label>
+                <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
 
-            <button type="submit">Registrar</button>
-        </form>
+                <button type="submit">Registrar</button>
+            </form>
+        </>
     )
 }
 

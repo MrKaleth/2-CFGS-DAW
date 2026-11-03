@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const Participante = ({ nombre, email, comprobado }) => {
+export const Participante = ({ participante, eliminarParticipante }) => {
     return (
         <>
-            <li>{nombre} {email}. <strong>{comprobado ? 'Confirmado' : 'Pendiente'}</strong></li>
+            <li>{participante.nombre} {participante.email}. <strong>{participante.comprobado ? 'Confirmado' : 'Pendiente'}</strong></li>
+            <button onClick={() => eliminarParticipante(participante.id)}>Eliminar</button>
         </>
     )
 }
