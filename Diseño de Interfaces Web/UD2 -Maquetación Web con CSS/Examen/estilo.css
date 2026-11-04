@@ -1,0 +1,317 @@
+/** {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+
+#container {
+    margin: 80px 8%;
+    position: relative;
+}
+
+#cabecera {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #F7BD21;
+    margin-bottom: 100px;
+}
+
+#logous {
+    width: 18em;
+    background-color: #F7BD21;
+}
+
+#logomed {
+    position: absolute;
+    margin-left: 20%;
+    background-color: #F7BD21;
+}
+
+#buscar {
+    padding-right: 200px;
+    background-color: #F7BD21;
+}
+
+#citaprevia {
+    background-color: #F7BD21;
+}
+
+#menu {
+    height: 100%;
+    text-align: center;
+    background-color: #F7BD21;
+}
+
+#menu a {
+    float: left;
+    width: 12.5%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #F7BD21;
+    color: #8C1018;
+    text-decoration: none;
+}
+
+
+#principal {
+    position: relative;
+    margin-bottom: 100px;
+
+}
+
+#historia {
+    background-image: url('imagenes_med\presenta.jpg');
+    background-size: cover;
+
+}
+
+#medicina {
+    background-image: url('imagenes_med\grado-medicina.jpg');
+    background-size: cover;
+}
+
+#biomedicina {
+    background-image: url('imagenes_med\grado-bioquimica.jpg');
+    background-size: cover;
+}
+
+#master {
+    background-image: url('imagenes_med\master-investigacion.jpg');
+    background-size: cover;
+}*/
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #fff;
+    color: #505050;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+#container {
+    width: 90%;
+    margin: 9px auto 40px;
+}
+
+#cabecera {
+    position: relative;
+    height: 180px;
+    background-color: #F7BD21;
+}
+
+#logous {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 128px;
+    height: 128px;
+}
+
+#logous img {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    object-fit: contain;
+}
+
+#logomed {
+    position: absolute;
+    top: 0;
+    left: 160px;
+    width: 285px;
+}
+
+#logomed img {
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+#buscar {
+    position: absolute;
+    top: 0;
+    right: 207px;
+    width: 50px;
+    height: 51px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    text-align: center;
+    line-height: 49px;
+}
+
+#buscar img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+
+#citaprevia {
+    position: absolute;
+    top: 0;
+    right: 34px;
+    width: 160px;
+}
+
+#citaprevia img {
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+#menu {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 52px;
+    padding: 0 12px;
+    text-align: center;
+    line-height: 52px;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+#menu a {
+    margin: 0 9px;
+    color: #8C1018;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+#menu a:hover,
+#menu a:focus-visible {
+    text-decoration: underline;
+}
+
+#principal {
+    position: relative;
+    height: 714px;
+}
+
+#historia {
+    position: relative;
+    height: 432px;
+    padding: 18px 26px;
+    background-image: url("./imagenes_med/presenta.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 75%;
+}
+
+#historia h1 {
+    margin: 0 0 20px;
+    font-size: 28px;
+    line-height: 1.2;
+    text-decoration: underline;
+}
+
+#historia > span {
+    display: block;
+    width: 365px;
+    max-width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.17;
+}
+
+#medicina,
+#biomedicina,
+#master {
+    position: absolute;
+    top: 483px;
+    width: 28%;
+    height: 231px;
+    padding: 15px 8px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 75%;
+}
+
+#medicina {
+    left: 4%;
+    background-image: url("./imagenes_med/grado-medicina.jpg");
+}
+
+#biomedicina {
+    left: 36%;
+    background-image: url("./imagenes_med/grado-bioquimica.jpg");
+}
+
+#master {
+    left: 68%;
+    background-image: url("./imagenes_med/master-investigacion.jpg");
+}
+
+#medicina h1,
+#biomedicina h1,
+#master h1 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+#medicina h1 span,
+#biomedicina h1 span,
+#master h1 span {
+    display: block;
+    font-size: 28px;
+    text-decoration: underline;
+}
+
+/* En pantallas estrechas se conserva el menu en una sola linea. */
+@media (max-width: 800px) {
+    #container {
+        width: 96%;
+    }
+
+    #cabecera {
+        height: 230px;
+    }
+
+    #logomed {
+        left: 140px;
+        width: 245px;
+        max-width: calc(100% - 150px);
+    }
+
+    #buscar,
+    #citaprevia {
+        top: 128px;
+    }
+
+    #principal {
+        height: auto;
+    }
+
+    #historia {
+        height: 432px;
+        padding: 18px;
+    }
+
+    #historia > span {
+        font-size: 21px;
+    }
+
+    #medicina,
+    #biomedicina,
+    #master {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 92%;
+        height: 250px;
+        margin: 30px auto 0;
+    }
+}
