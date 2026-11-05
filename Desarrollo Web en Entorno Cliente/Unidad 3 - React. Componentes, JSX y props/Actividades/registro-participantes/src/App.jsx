@@ -1,4 +1,4 @@
-import React, { useState } from 'react' // 1. Importamos useState
+import React, { useState } from 'react'
 import { Cabecera } from './components/Cabecera'
 import { FormularioRegistro } from './components/FormularioRegistro'
 import { Contador } from './components/Contador'
@@ -10,25 +10,35 @@ export const App = () => {
 
     const listaParticipantesComprobados = listaParticipantes.filter(p => p.comprobado);
 
+    const siguienteId = listaParticipantes.reduce((max, p) => Math.max(p.id, max), 0) + 1;
+
     const anyadirParticipante = (nuevo) => {
         setListaParticipantes([...listaParticipantes, nuevo]);
         console.log(nuevo);
-
     }
 
     const eliminarParticipante = (id) => {
         setListaParticipantes(listaParticipantes => listaParticipantes.filter(p => p.id !== id))
     }
 
+    const cambiarComprobado = (id) => {
+        setListaParticipantes(listaParticipantes => listaParticipantes.map(p => p.id === id ? {
+            ...p,
+            comprobado: !p.comprobado
+        } : p))
+        console.log(listaParticipantes.map(p => p.id === id))
+    }
+
     return (
         <>
             <Cabecera />
-            <FormularioRegistro anyadirParticipante={anyadirParticipante} nextId={listaParticipantes.length + 1} />
+
+            <FormularioRegistro anyadirParticipante={anyadirParticipante} nextId={siguienteId} />
             <Contador total={listaParticipantes.length} />
             <ListaParticipantes participantes={listaParticipantes} titulo="Lista de Participantes"
-                eliminarParticipante={eliminarParticipante} eliminar={true} />
+                eliminarParticipante={eliminarParticipante} cambiarComprobado={cambiarComprobado} />
             <ListaParticipantes participantes={listaParticipantesComprobados} titulo="Lista de Participantes Comprobados"
-                eliminarParticipante={eliminarParticipante} eliminar={false} />
+            />
         </>
     )
 }
