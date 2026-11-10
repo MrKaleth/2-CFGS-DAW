@@ -9,12 +9,11 @@ const ListaParticipantes = ({ participantes, titulo, eliminarParticipante, cambi
                     {participantes.map(
                         participante =>
                             <Participante key={participante.id} participante={participante}
-                                eliminarParticipante={eliminarParticipante} cambiarComprobado={cambiarComprobado}
-                            />)}
+                                eliminarParticipante={eliminarParticipante} cambiarComprobado={cambiarComprobado} />)}
                 </ul>
             }
         </>
     )
 }
 
-export default ListaParticipantes
+export default ListaParticipantes;
