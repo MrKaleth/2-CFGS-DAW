@@ -1,4 +1,3 @@
-
 const EditarParticipante = () => {
   return (
     <>EditarParticipante</>
