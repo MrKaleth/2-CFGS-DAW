@@ -13,7 +13,7 @@ import java.util.List;
 
 public class EmpleadoController extends HttpServlet {
 
-    private final EmpleadoService servicio = new EmpleadoService();
+    private final EmpleadoService servicio = EmpleadoService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -62,7 +62,6 @@ public class EmpleadoController extends HttpServlet {
             manejarError(req, resp, "Error procesando la petición POST: " + e.getMessage());
         }
     }
-
 
     private void mostrarEmpleados(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         List<Empleado> listaEmpleados = servicio.obtenerTodos();

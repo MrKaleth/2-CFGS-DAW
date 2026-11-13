@@ -3,70 +3,53 @@ package laboral.repository;
 import laboral.exceptions.DatosNoCorrectosException;
 import laboral.models.Empleado;
 import laboral.models.Nomina;
+import laboral.utils.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implementación de la interfaz {@link EmpleadoRepository} que utiliza
- * una base de datos MariaDB para el almacenamiento principal y ficheros
- * para copias de seguridad.
- */
 public class EmpleadoRepositoryImpl implements EmpleadoRepository {
-    private final EmpleadoFDat empleadoFDat = new EmpleadoFDat();
+
+    private static EmpleadoRepositoryImpl instance;
     private final EmpleadoFTXT empleadoFTXT = new EmpleadoFTXT();
-    private static final String URL = "jdbc:mariadb://localhost:3306/gestion_nominas";
-    private static final String USER = "root";
-    private static final String PASSWORD = "123456";
+    private final EmpleadoFDat empleadoFDat = new EmpleadoFDat();
 
-    /**
-     * Establece y obtiene la conexión con la base de datos.
-     *
-     * @return Objeto Connection con la base de datos establecida.
-     * @throws SQLException Si ocurre algún error al conectar con la base de datos.
-     */
-    private Connection obtenerConexion() throws SQLException {
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Driver de MariaDB no encontrado: " + e.getMessage());
-        }
-
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+    private EmpleadoRepositoryImpl() {
     }
 
-    /**
-     * {@inheritDoc}
-     * Realiza la inserción o actualización utilizando transacciones para asegurar
-     * que la tabla Empleados y la tabla Nominas se mantienen consistentes.
-     */
+    public static synchronized EmpleadoRepositoryImpl getInstance() {
+        if (instance == null) {
+            instance = new EmpleadoRepositoryImpl();
+        }
+        return instance;
+    }
+
     @Override
     public void altaEmpleado(Empleado empleado) {
         String sqlEmpleado = "INSERT INTO Empleados (dni, nombre, sexo, categoria, anyos) " +
                 "VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE nombre=?, sexo=?, categoria=?, anyos=?";
-
         String sqlNomina = "INSERT INTO Nominas (dni, sueldo) VALUES (?, ?) ON DUPLICATE KEY UPDATE sueldo=?";
 
-        try (Connection conn = obtenerConexion()) {
+        try (Connection conn = DBConnection.getConnection()) {
             conn.setAutoCommit(false);
             try (PreparedStatement psEmp = conn.prepareStatement(sqlEmpleado);
                  PreparedStatement psNom = conn.prepareStatement(sqlNomina)) {
 
-                psEmp.setString(1, empleado.dni);
-                psEmp.setString(2, empleado.nombre);
-                psEmp.setString(3, String.valueOf(empleado.sexo));
+                psEmp.setString(1, empleado.getDni());
+                psEmp.setString(2, empleado.getNombre());
+                psEmp.setString(3, String.valueOf(empleado.getSexo()));
                 psEmp.setInt(4, empleado.getCategoria());
-                psEmp.setInt(5, empleado.anyosTrabajados);
+                psEmp.setInt(5, empleado.getAnyosTrabajados());
 
-                psEmp.setString(6, empleado.nombre);
-                psEmp.setString(7, String.valueOf(empleado.sexo));
+                psEmp.setString(6, empleado.getNombre());
+                psEmp.setString(7, String.valueOf(empleado.getSexo()));
                 psEmp.setInt(8, empleado.getCategoria());
-                psEmp.setInt(9, empleado.anyosTrabajados);
+                psEmp.setInt(9, empleado.getAnyosTrabajados());
                 psEmp.executeUpdate();
 
                 int sueldoCalculado = Nomina.sueldo(empleado);
-                psNom.setString(1, empleado.dni);
+                psNom.setString(1, empleado.getDni());
                 psNom.setInt(2, sueldoCalculado);
                 psNom.setInt(3, sueldoCalculado);
                 psNom.executeUpdate();
@@ -80,9 +63,6 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void altaEmpleado(String rutaTXT) {
         List<Empleado> nuevos = empleadoFTXT.leerEmpleados(rutaTXT);
@@ -92,14 +72,12 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         System.out.println("Lote procesado. Empleados añadidos a la BD: " + nuevos.size());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<Empleado> obtenerTodos() {
         List<Empleado> lista = new ArrayList<>();
         String sql = "SELECT * FROM Empleados";
-        try (Connection conn = obtenerConexion();
+
+        try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
@@ -121,14 +99,12 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         return lista;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Empleado obtenerPorDni(String dni) {
         String sql = "SELECT * FROM Empleados WHERE dni = ?";
         Empleado empleadoEncontrado = null;
-        try (Connection conn = obtenerConexion();
+
+        try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, dni);
             try (ResultSet rs = ps.executeQuery()) {
@@ -146,14 +122,12 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         return empleadoEncontrado;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int obtenerSalarioPorDni(String dni) {
         String sql = "SELECT sueldo FROM Nominas WHERE dni = ?";
         int salario = -1;
-        try (Connection conn = obtenerConexion();
+
+        try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, dni);
             try (ResultSet rs = ps.executeQuery()) {
@@ -167,9 +141,6 @@ public class EmpleadoRepositoryImpl implements EmpleadoRepository {
         return salario;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void realizarCopiaSeguridad(String rutaTXT, String rutaDAT) {
         List<Empleado> todosLosEmpleados = obtenerTodos();

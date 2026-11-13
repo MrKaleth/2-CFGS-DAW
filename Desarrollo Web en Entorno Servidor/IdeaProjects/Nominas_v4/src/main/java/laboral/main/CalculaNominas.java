@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class CalculaNominas {
 
-    private final EmpleadoService servicio = new EmpleadoService();
+    private final EmpleadoService servicio = EmpleadoService.getInstance();
     private final Scanner scanner = new Scanner(System.in);
 
     /**
@@ -173,7 +173,7 @@ public class CalculaNominas {
     }
 
     /**
-     * Solicita un DNI y recalcula el sueldo del emplead,
+     * Solicita un DNI y recalcula el sueldo del empleado,
      * actualizándolo en la base de datos.
      */
     private void menuRecalcularSueldoIndividual() {
