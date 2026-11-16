@@ -10,9 +10,10 @@ import java.sql.SQLException;
  */
 public class DBConnection {
 
-    private static final String URL = "jdbc:mariadb://localhost:3306/gestion_nominas";
+    private static final String URL = "jdbc:mariadb://localhost:3307/gestion_nominas?allowPublicKeyRetrieval=true"; //En dispositivo normal cambiar a puerto 3306
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
+
 
     private DBConnection() {
     }
@@ -29,6 +30,7 @@ public class DBConnection {
         } catch (ClassNotFoundException e) {
             System.err.println("Driver de MariaDB no encontrado en el classpath: " + e.getMessage());
         }
+
 
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
