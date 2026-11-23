@@ -2,6 +2,7 @@ import FormularioPedido from "./components/FormularioPedido.jsx";
 import ControlesConsulta from "./components/ControlesConsulta.jsx";
 import ListaPedidos from "./components/ListaPedidos.jsx";
 import PresupuestoMaterial from "./components/PresupuestoMaterial.jsx";
+import PreparacionLote from "./components/PreparacionLote.jsx";
 import { pedidosIniciales } from "./data/pedidos.js";
 import { useState } from "react";
 
@@ -49,10 +50,41 @@ const obtenerFilasPresupuesto = (pedidosVisibles, material) =>
       },
     }));
 
+const calcularPropuestaLote = (pedidos, material, gramosDisponibles) => {
+  const candidatos = pedidos
+    .filter((pedido) => !pedido.fabricado && pedido.material === material)
+    .map((pedido) => ({
+      ...pedido,
+      pesoTotal: pedido.unidades * pedido.gramosPorUnidad,
+    }))
+    .sort((a, b) => a.pesoTotal - b.pesoTotal || a.id - b.id);
+
+  let gramosLibres = gramosDisponibles;
+  const propuesta = [];
+
+  for (const pedido of candidatos) {
+    if (pedido.pesoTotal <= gramosLibres) {
+      propuesta.push(pedido);
+      gramosLibres -= pedido.pesoTotal;
+    }
+  }
+
+  return {
+    propuesta,
+    gramosPrevistos: gramosDisponibles - gramosLibres,
+    gramosLibres,
+  };
+};
+
 const App = () => {
   const [pedidos, setPedidos] = useState(pedidosIniciales);
   const [consulta, setConsulta] = useState(CONSULTA_INICIAL);
   const [material, setMaterial] = useState("PLA");
+
+  // Estados del Ejercicio 5 (Lote de impresión)
+  const [materialLote, setMaterialLote] = useState("PLA");
+  const [gramosDisponibles, setGramosDisponibles] = useState(150);
+  const [idsMarcados, setIdsMarcados] = useState([]);
 
   const pedidosVisibles = ordenar(filtrar(pedidos, consulta), consulta.orden);
   const totalPedidos = pedidos.length;
@@ -63,6 +95,30 @@ const App = () => {
     (acumulado, fila) => acumulado + fila.pesoTotal(),
     0
   );
+
+  // Cálculos derivados para la propuesta de lote (usa TODOS los pedidos pendientes)
+  const { propuesta, gramosPrevistos, gramosLibres } = calcularPropuestaLote(
+    pedidos,
+    materialLote,
+    gramosDisponibles
+  );
+  const marcadosEnPropuesta = idsMarcados.filter((id) =>
+    propuesta.some((pedido) => pedido.id === id)
+  );
+
+  // Sincroniza las marcas si una acción en el registro altera la propuesta
+  const actualizarPedidos = (nuevosPedidos) => {
+    const nuevaPropuesta = calcularPropuestaLote(
+      nuevosPedidos,
+      materialLote,
+      gramosDisponibles
+    ).propuesta;
+
+    setPedidos(nuevosPedidos);
+    setIdsMarcados((actual) =>
+      actual.filter((id) => nuevaPropuesta.some((pedido) => pedido.id === id))
+    );
+  };
 
   const registrarPedido = (nuevoPedido) => {
     let error = "";
@@ -103,14 +159,14 @@ const App = () => {
         fabricado: false,
       };
 
-      setPedidos([...pedidos, pedidoCompleto]);
+      actualizarPedidos([...pedidos, pedidoCompleto]);
     }
 
     return error;
   };
 
   const cambiarEstadoPedido = (id) => {
-    setPedidos(
+    actualizarPedidos(
       pedidos.map((pedido) =>
         pedido.id === id ? { ...pedido, fabricado: !pedido.fabricado } : pedido
       )
@@ -118,7 +174,7 @@ const App = () => {
   };
 
   const eliminarPedido = (id) => {
-    setPedidos(pedidos.filter((pedido) => pedido.id !== id));
+    actualizarPedidos(pedidos.filter((pedido) => pedido.id !== id));
   };
 
   const cambiarConsulta = (campo, valor) => {
@@ -136,8 +192,39 @@ const App = () => {
     setMaterial(evento.target.value);
   };
 
+  const cambiarMaterialLote = (evento) => {
+    setMaterialLote(evento.target.value);
+    setIdsMarcados([]);
+  };
+
+  const cambiarGramosDisponibles = (evento) => {
+    setGramosDisponibles(Number(evento.target.value));
+    setIdsMarcados([]);
+  };
+
+  const alternarMarcaLote = (id) => {
+    setIdsMarcados((actual) =>
+      actual.includes(id)
+        ? actual.filter((item) => item !== id)
+        : [...actual, id]
+    );
+  };
+
+  const cerrarLote = () => {
+    setPedidos(
+      pedidos.map((pedido) =>
+        marcadosEnPropuesta.includes(pedido.id)
+          ? { ...pedido, fabricado: true }
+          : pedido
+      )
+    );
+    setIdsMarcados([]);
+  };
+
   const mensajeListaVacia =
-    totalPedidos === 0 ? "No hay pedidos registrados." : "No hay pedidos que coincidan con la consulta.";
+    totalPedidos === 0
+      ? "No hay pedidos registrados."
+      : "No hay pedidos que coincidan con la consulta.";
 
   return (
     <>
@@ -163,6 +250,18 @@ const App = () => {
         cambiarMaterial={cambiarMaterial}
         pedidos={filasPresupuesto}
         totalGramos={totalGramos}
+      />
+      <PreparacionLote
+        material={materialLote}
+        onCambiarMaterial={cambiarMaterialLote}
+        gramosDisponibles={gramosDisponibles}
+        onCambiarGramos={cambiarGramosDisponibles}
+        propuesta={propuesta}
+        gramosPrevistos={gramosPrevistos}
+        gramosLibres={gramosLibres}
+        idsMarcados={marcadosEnPropuesta}
+        onAlternarMarca={alternarMarcaLote}
+        onCerrarLote={cerrarLote}
       />
     </>
   );
