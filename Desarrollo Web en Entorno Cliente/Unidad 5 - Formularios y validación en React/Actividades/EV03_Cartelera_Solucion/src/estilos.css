@@ -1,0 +1,49 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #192a3c;
+  background: #f4f6f9;
+}
+
+body {
+  margin: 0;
+}
+
+header, main {
+  max-width: 64rem;
+  margin: auto;
+  padding: 0.75rem 1.25rem;
+}
+
+section {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: white;
+  border: 1px solid #d3dce6;
+  border-radius: 0.5rem;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+}
+
+input, select, button {
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  margin: 0.25rem 0 0.75rem;
+}
+
+input, select {
+  display: block;
+  width: min(100%, 24rem);
+}
+
+.listas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+}
